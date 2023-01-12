@@ -287,3 +287,32 @@ a, b = [1, 2]
 c, d = [10]
 
 e, f = [100, 200, 300]
+
+quo_rem = 14.divmod(3)
+"商 =#{quo_rem[0]}, 余り =#{ quo_rem[1]}"
+
+quotient, remainder = 14.divmod(3)
+"商 =#{quotient}, 余り =#{remainder}"
+
+numbers = [1, 2, 3, 4]
+sum = 0
+numbers.each do |n|
+    sum += n
+end
+sum
+
+## 4.3.4 ブロックパラメータとブロック内の変数
+
+numbers = [1, 2, 3, 4]
+sum = 0
+numbers.each do |n|
+    sum_value = n.even? ? n * 10 : n
+    sum += sum_value
+end
+sum
+
+
+numbers = [1, 2, 3, 4]
+sum = 0
+numbers.each { |n| sum += n }
+sum
