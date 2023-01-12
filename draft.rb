@@ -1,4 +1,6 @@
-# irbでテストするようのメモ書き
+# プロを目指す人のためのRuby入門[改訂第２版] 学習
+
+irbでテストする場合のメモ書き
 
 ## 2.8.4 フォーマットを指定して文字列を作成する
 
@@ -316,3 +318,55 @@ numbers = [1, 2, 3, 4]
 sum = 0
 numbers.each { |n| sum += n }
 sum
+
+## 4.4.1 map/collect
+
+numbers = [1, 2, 3, 4, 5]
+new_numbers = []
+numbers.each { |n| new_numbers << n * 10 }
+new_numbers
+
+numbers = [1, 2, 3, 4, 5]
+new_numbers = numbers.map { |n| n * 10 }
+new_numbers
+
+## 4.4.2 select/find_all_reject
+
+numbers = [1, 2, 3, 4, 5, 6]
+even_number = numbers.select{ |n| n.even? }
+even_number
+
+numbers = [1, 2, 3, 4, 5, 6]
+non_multiples_of_three = numbers.reject{ |n| n % 3 == 0 }
+non_multiples_of_three
+
+### 4.4.3 find/detect
+
+numbers = [1, 2, 3, 4, 5, 6]
+even_number = numbers.find{ |n| n.even? }
+even_number
+
+### 4.4.4 sum
+
+numbers = [1,2,3,4]
+numbers.sum
+
+numbers = [1,2,3,4]
+numbers.sum{ |n| n * 2}
+
+numbers = [1,2,3,4]
+numbers.sum(5)
+
+chars = ['a', 'b', 'c']
+chars.sum('')
+
+chars.join('')
+
+chars.join('-')
+
+data = ['a',2,'b',4]
+data.join
+
+chars.sum('>'){ |c| c.upcase }
+
+
