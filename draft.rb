@@ -1,8 +1,8 @@
-# ƒvƒ‚ğ–Úw‚·l‚Ì‚½‚ß‚ÌRuby“ü–å[‰ü’ù‘æ‚Q”Å] ŠwK
+# ãƒ—ãƒ­ã‚’ç›®æŒ‡ã™äººã®ãŸã‚ã®Rubyå…¥é–€[æ”¹è¨‚ç¬¬ï¼’ç‰ˆ] å­¦ç¿’
 
-irb‚ÅƒeƒXƒg‚·‚éê‡‚Ìƒƒ‚‘‚«
+irbã§ãƒ†ã‚¹ãƒˆã™ã‚‹å ´åˆã®ãƒ¡ãƒ¢æ›¸ã
 
-## 2.8.4 ƒtƒH[ƒ}ƒbƒg‚ğw’è‚µ‚Ä•¶š—ñ‚ğì¬‚·‚é
+## 2.8.4 ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æŒ‡å®šã—ã¦æ–‡å­—åˆ—ã‚’ä½œæˆã™ã‚‹
 
 sprintf('%0.3f', 1.2)
 
@@ -12,7 +12,7 @@ sprintf('%0.3f + %0.3f', 1.2, 0.48)
 
 '%0.3f + %0.3f' % [1.2, 0.48]
 
-## 2.8.5 ‚»‚Ì‘¼A•¶š—ñì¬‚Ì‚¢‚ë‚¢‚ë
+## 2.8.5 ãã®ä»–ã€æ–‡å­—åˆ—ä½œæˆã®ã„ã‚ã„ã‚
 
 123.to_s
 
@@ -31,7 +31,7 @@ puts "\u0041"
 
 ?a
 
-## 2.9.1 Šî”w¦q‚ğ—p‚¢‚½®”ƒŠƒeƒ‰ƒ‹
+## 2.9.1 åŸºæ•°æŒ‡ç¤ºå­ã‚’ç”¨ã„ãŸæ•´æ•°ãƒªãƒ†ãƒ©ãƒ«
 
 0b11111111
 
@@ -42,7 +42,7 @@ puts "\u0041"
 
 0d255
 
-## ƒrƒbƒg‰‰Z
+## ãƒ“ãƒƒãƒˆæ¼”ç®—
 
 sprintf '%#b', (0b1010 & 0b1100)
 sprintf '%#b', (0b1010 | 0b1100)
@@ -51,11 +51,11 @@ sprintf '%#b', (0b1010 >> 1)
 sprintf '%#b', (0b1010 << 1)
 sprintf '%#b', ~0b1010
 
-## w”•\Œ»
+## æŒ‡æ•°è¡¨ç¾
 
 2e-3
 
-## ”’lƒNƒ‰ƒX‚Ì‚ ‚ê‚±‚ê
+## æ•°å€¤ã‚¯ãƒ©ã‚¹ã®ã‚ã‚Œã“ã‚Œ
 
 10.class
 1.5.class
@@ -71,13 +71,13 @@ c.class
 c = '0.3-0.5i'.to_c
 c.class
 
-## 2.10.2 —Dæ‡ˆÊ‚ª’á‚¢andAorAnot
+## 2.10.2 å„ªå…ˆé †ä½ãŒä½ã„andã€orã€not
 
 def greet(country)
-    country or return 'country‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢'
+    country or return 'countryã‚’å…¥åŠ›ã—ã¦ãã ã•ã„'
 
     if country == 'japan'
-        '‚±‚ñ‚É‚¿‚Í'
+        'ã“ã‚“ã«ã¡ã¯'
     else
         'Hello'
     end
@@ -85,35 +85,35 @@ end
 greet(nil)
 greet('japan')
 
-## 2.10.3 unless•¶
+## 2.10.3 unlessæ–‡
 
 status = 'error'
 unless status == 'ok'
-    '‚È‚É‚©ˆÙí‚ª‚ ‚è‚Ü‚·'
+    'ãªã«ã‹ç•°å¸¸ãŒã‚ã‚Šã¾ã™'
 end
 
 
 status = 'error'
 message =
     unless status == 'ok'
-        '‚È‚É‚©ˆÙí‚ª‚ ‚è‚Ü‚·'
+        'ãªã«ã‹ç•°å¸¸ãŒã‚ã‚Šã¾ã™'
     else
-        '³í‚Å‚·'
+        'æ­£å¸¸ã§ã™'
     end
 end
 
 status = 'error'
 unless status == 'ok' then
-    '‚È‚É‚©ˆÙí‚ª‚ ‚è‚Ü‚·'
+    'ãªã«ã‹ç•°å¸¸ãŒã‚ã‚Šã¾ã™'
 end
 
-## 2.10.4 case•¶
+## 2.10.4 caseæ–‡
 
 country = 'italy'
 
 case country
 when 'japan'
-    '‚±‚ñ‚É‚¿‚Í'
+    'ã“ã‚“ã«ã¡ã¯'
 when 'us'
     'Hello'
 when 'italy'
@@ -122,26 +122,26 @@ else
     '???'
 end
 
-### whenß‚É•¡”‚Ì’l‚ğw’è‚·‚é
+### whenç¯€ã«è¤‡æ•°ã®å€¤ã‚’æŒ‡å®šã™ã‚‹
 
-country = 'ƒAƒƒŠƒJ'
+country = 'ã‚¢ãƒ¡ãƒªã‚«'
 
 case country
-when 'japan','“ú–{'
-    '‚±‚ñ‚É‚¿‚Í'
-when 'us','ƒAƒƒŠƒJ'
+when 'japan','æ—¥æœ¬'
+    'ã“ã‚“ã«ã¡ã¯'
+when 'us','ã‚¢ãƒ¡ãƒªã‚«'
     'Hello'
-when 'italy','ƒCƒ^ƒŠƒA'
+when 'italy','ã‚¤ã‚¿ãƒªã‚¢'
     'Ciao'
 else
     '???'
 end
 
-## 2.11.1ƒfƒBƒtƒHƒ‹ƒg’l•t‚«‚Ìˆø”
+## 2.11.1ãƒ‡ã‚£ãƒ•ã‚©ãƒ«ãƒˆå€¤ä»˜ãã®å¼•æ•°
 
 def greet(country='japan')
     if country == 'japan'
-        '‚±‚ñ‚É‚¿‚Í'
+        'ã“ã‚“ã«ã¡ã¯'
     else
         'hello'
     end
@@ -171,7 +171,7 @@ end
 point(3)
 point(3, 10)
 
-## ?‚ÅI‚í‚éƒƒ\ƒbƒh
+## ?ã§çµ‚ã‚ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 
 ''.empty?
 'abc'.empty?
@@ -211,16 +211,16 @@ s = 'ruby'
 reverse_upcase(s)
 reverse_upcase!(s)
 
-## ƒGƒ“ƒhƒŒƒXƒƒ\ƒbƒh’è‹`i1sƒƒ\ƒbƒh’è‹`j
+## ã‚¨ãƒ³ãƒ‰ãƒ¬ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰å®šç¾©ï¼ˆ1è¡Œãƒ¡ã‚½ãƒƒãƒ‰å®šç¾©ï¼‰
 
 def greet= 'Hello!'
 def add(a, b) = a + b
 
-## 2.12.3 ®‚Æ•¶
+## 2.12.3 å¼ã¨æ–‡
 
 b = def foo; end
 
-## 2.12.5 QÆ‚ÌŠT”O‚ğ—‰ğ‚·‚é
+## 2.12.5 å‚ç…§ã®æ¦‚å¿µã‚’ç†è§£ã™ã‚‹
 
 a = 'hello'
 b = 'hello'
@@ -246,12 +246,12 @@ m!(c)
 b
 c
 
-## 2.12.7 require‚Ærequire_relative
+## 2.12.7 requireã¨require_relative
 
 require 'date'
 Date.today
 
-## 2.12.8 putsƒƒ\ƒbƒhAprintƒƒ\ƒbƒhApƒƒ\ƒbƒhAppƒƒ\ƒbƒh
+## 2.12.8 putsãƒ¡ã‚½ãƒƒãƒ‰ã€printãƒ¡ã‚½ãƒƒãƒ‰ã€pãƒ¡ã‚½ãƒƒãƒ‰ã€ppãƒ¡ã‚½ãƒƒãƒ‰
 
 s = "abc\ndef"
 puts s
@@ -263,7 +263,7 @@ puts a
 print a
 p a
 
-## 4.2 ”z—ñ
+## 4.2 é…åˆ—
 
 [].class
 a = [1, 2, 3]
@@ -283,7 +283,7 @@ a << 3
 a.delete_at(1)
 a.delete_at(100)
 
-## 4.2.2 ”z—ñ‚ğg‚Á‚½‘½d‘ã“ü
+## 4.2.2 é…åˆ—ã‚’ä½¿ã£ãŸå¤šé‡ä»£å…¥
 
 a, b = [1, 2]
 c, d = [10]
@@ -291,10 +291,10 @@ c, d = [10]
 e, f = [100, 200, 300]
 
 quo_rem = 14.divmod(3)
-"¤ =#{quo_rem[0]}, —]‚è =#{ quo_rem[1]}"
+"å•† =#{quo_rem[0]}, ä½™ã‚Š =#{ quo_rem[1]}"
 
 quotient, remainder = 14.divmod(3)
-"¤ =#{quotient}, —]‚è =#{remainder}"
+"å•† =#{quotient}, ä½™ã‚Š =#{remainder}"
 
 numbers = [1, 2, 3, 4]
 sum = 0
@@ -303,7 +303,7 @@ numbers.each do |n|
 end
 sum
 
-## 4.3.4 ƒuƒƒbƒNƒpƒ‰ƒ[ƒ^‚ÆƒuƒƒbƒN“à‚Ì•Ï”
+## 4.3.4 ãƒ–ãƒ­ãƒƒã‚¯ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ãƒ–ãƒ­ãƒƒã‚¯å†…ã®å¤‰æ•°
 
 numbers = [1, 2, 3, 4]
 sum = 0
@@ -369,4 +369,10 @@ data.join
 
 chars.sum('>'){ |c| c.upcase }
 
+### 4.4.5 & ã¨ã‚·ãƒ³ãƒœãƒ«ã‚’ä½¿ã£ã¦ã‚‚ã£ã¨ç°¡æ½”ã«æ›¸ã
+
+['ruby','java','python'].map(&:upcase)
+[1, 2, 3, 4, 5, 6].select(&:odd?)
+
+## 4.5 ç¯„å›²
 
