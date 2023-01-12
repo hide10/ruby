@@ -387,3 +387,13 @@ a[1..3]
 a = 'abcdef'
 a[1..3]
 
+### 4.5.2 n以上m以下、n以上m未満の判定をする
+
+def liquid?(temperature)
+    (0...100).include?(temperature)
+end
+liquid?(-1)
+liquid?(0)
+liquid?(99)
+liquid?(100)
+
