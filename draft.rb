@@ -590,3 +590,30 @@ a = [1,2,3]
 
 prefix = 'This is'
 %W(#{prefix}\ an\ apple small\nmelon orange)
+
+### 4.7.11 文字列を配列に変換する
+
+'Ruby'.chars
+'Ruby,Java,Python'.split(',')
+
+### 4.7.12 配列にデフォルト値を設定する
+
+a = Array.new(5)
+a = Array.new(5, 0)
+a = Array.new(10){ |n| n% 3 + 1 }
+
+### 4.7.13 配列にデフォルト値を設定する場合の注意点
+
+#### 1番目の要素を変えるだけで要素すべてに影響を表す
+
+a = Array.new(5, 'default')
+str = a[0]
+str.upcase!
+a
+
+#### 回避策： ブロックでデフォルト値を渡す
+
+a = Array.new(5){'default'}
+str = a[0]
+str.upcase!
+a
