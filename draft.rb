@@ -557,3 +557,36 @@ case country
 when *jp
     'こんにちは'
 end
+
+def greet(*names)
+    "#{names.join('と')}、こんにちは！"
+end
+greet('田中さん')
+greet('田中さん','鈴木さん')
+greet('田中さん','鈴木さん','佐藤さん')
+
+### 4.7.8 *で配列同士を非破壊的に連結する
+
+a = [1,2,3]
+[-1,0, *a, 4,5]
+
+### 4.7.9 == で等しい配列かどうか判断する
+
+[1,2,3] == [1,2,3]
+[1,2,3]==[1,2,4]
+[1,2,3]==[1,2]
+[1,2,3]==[1,2,3,4]
+
+### 4.7.10 %記法で文字列の配列を簡潔に作る
+
+%w!apple melon orange!
+%w(apple melon orange)
+%w(
+    apple
+    melon
+    orange
+)
+%w(big\ apple small\ melon orange)
+
+prefix = 'This is'
+%W(#{prefix}\ an\ apple small\nmelon orange)
