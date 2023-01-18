@@ -617,3 +617,65 @@ a = Array.new(5){'default'}
 str = a[0]
 str.upcase!
 a
+
+## 4.8.1
+
+fruits = ['apple','orange','melon']
+fruits.each_with_index{ |fruit, i| puts "#{i}: #{fruit}" }
+
+fruits = ['apple','orange','melon']
+fruits.map.with_index { |fruit, i| "#{i}: #{fruit}" }
+
+fruits.delete_if.with_index { |fruit, i| fruit.include?('a') && i.odd? }
+
+### 4.8.3 添え字を0以外の数値から開始させる
+
+fruits = ['apple', 'orange', 'melon']
+
+fruits.each.with_index(1) { |fruits, i| puts "#{i}: #{fruits}" }
+fruits.map.with_index(10) { |fruits, i| puts "#{i}: #{fruits}" }
+
+### 4.8.4
+
+dimensions = [
+    [10, 20],
+    [30, 40],
+    [50, 60],
+]
+
+areas = []
+dimensions.each do |dimension|
+    length = dimension[0]
+    width = dimension[1]
+    areas << length * width
+end
+areas
+
+areas = []
+dimensions.each do |length, width|
+    areas << length * width
+end
+areas
+
+dimensions.each_with_index do |length, width, i|
+    puts "length: #{length}, width: #{width}, i:#{i}"
+end
+
+dimensions.each_with_index do |dimension, i|
+    length = dimension[0]
+    width = dimension[1]
+    puts "length: #{length}, width: #{width}, i:#{i}"
+end
+
+dimensions.each_with_index do |(length, width), i|
+    puts "length: #{length}, width: #{width}, i:#{i}"
+end
+
+dimension, i = [[10,20], 0]
+dimension
+i
+
+(length, width), i = [[10,20], 0]
+length
+width
+i
