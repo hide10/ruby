@@ -679,3 +679,79 @@ i
 length
 width
 i
+
+### 4.8.5
+
+['1', '20', '300'].map {_1.rjust(3, '0')}
+['japan', 'us', 'italy'].map.with_index { [_2, _1] }
+
+dimensions = [
+    [10, 20],
+    [30, 40],
+    [50, 60],
+]
+dimensions.each { p _1 }
+dimensions.each { puts "#{_1} / #{_2}" }
+
+#### エラーになるパターン
+
+sum = 0
+[[1,2,3],[4,5,6]].each do
+    _1.each do
+        sum += _1
+    end
+end
+
+sum = 0
+[[1,2,3],[4,5,6]].each do |values|
+    values.each do
+        sum += _1
+    end
+end
+
+### 4.8.6
+
+numbers = [1,2,3,4]
+sum = 0
+numbers.each do |n; sum|
+    sum = 10
+    sum += n
+    puts sum
+end
+sum
+
+### 4.8.7
+
+File.open('./sample.txt','w') do |file|
+    file.puts('1行目のテキストです。')
+    file.puts('2行目のテキストです。')
+    file.puts('3行目のテキストです。')
+end
+
+a = [1, 2, 3]
+a.delete(100) do
+    'NG'
+end
+
+#### {} の結合が強くNGになるパターン
+a.delete 100 {'NG'}
+#### 解決方法
+a.delete(100) {'NG'}
+
+### 4.8.9
+
+names = ['田中', '鈴木', '佐藤']
+san_names = names.map{ |name| "#{name}さん" }
+san_names.join('と')
+
+names.map{ |name| "#{name}さん" }.join('と')
+
+## 4.10
+
+sum = 0
+5.times { |n| sum += n }
+sum
+
+sum = 0
+5.times { sum += 1 }
+sum
