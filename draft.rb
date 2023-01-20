@@ -755,3 +755,198 @@ sum
 sum = 0
 5.times { sum += 1 }
 sum
+
+### 4.10.2 uptoメソッドとdowntoメソッド
+
+a = []
+10.upto(14) { |n| a << n }
+a
+
+a = []
+14.downto(10) { |n| a << n }
+a
+
+### 4.10.3 stepメソッド
+
+a = []
+1.step(10,2) { |n| a << n }
+a
+
+a = []
+10.step(1,-2) { |n| a << n }
+a
+
+### 4.10.4 while文とuntil文
+
+a = []
+while a.size < 5
+    a << 1
+end
+a
+
+a = []
+while a.size < 5 do a << 1 end
+
+a = []
+a << 1 while a.size < 5
+
+a = []
+while false
+    a << 1
+end
+a
+
+begin
+    a << 1
+end while false
+
+a = [10, 20, 30, 40, 50]
+until a.size <= 3
+    a.delete_at(-1)
+end
+a
+
+### 4.10.5 for文
+
+numbers = [1, 2, 3, 4]
+sum = 0
+for n in numbers
+    sum += n
+end
+sum
+
+sum = 0
+for n in numbers do sum += n end
+sum
+
+numbers = [1, 2, 3, 4]
+sum = 0
+numbers.each do |n|
+    sum_value = n.even? ? n * 10:n
+    sum += sum_value
+end
+
+sum = 0
+for n in numbers
+    sum_value = n.even? ? n * 10:n
+    sum += sum_value
+end
+
+### 4.10.6 loopメソッド
+
+numbers = [1, 2, 3, 4, 5]
+loop do
+    n = numbers.sample
+    puts n
+    break if n == 5
+end
+
+while true
+    n = numbers.sample
+    puts n
+    break if n == 5
+end
+
+### 4.10.7 再帰呼び出し
+
+def factional(n)
+    n > 0 ? n * factional(n - 1): 1
+end
+factional(5)
+factional(0)
+
+#### 再帰を使わない例
+
+def factional(n)
+    ret = 1
+    (1..n).each { |n| ret *= n }
+    ret
+end
+
+(1..4).map{ |n| n * 10 }
+
+1.upto(5).select { |n| n.odd? }
+
+### 4.11.1 break
+
+numbers = [1,2,3,4,5].shuffle
+numbers.each do |n|
+    puts n
+    break if n == 5
+end
+
+numbers = [1,2,3,4,5].shuffle
+i = 0
+while i < numbers.size
+    n = numbers[i]
+    puts n
+    break if n == 5
+    i += 1
+end
+
+ret =
+    while true
+        break
+    end
+ret
+
+ret =
+    while true
+        break 123
+    end
+ret
+
+fruits = ['apple','melon','orange']
+number = [1,2,3]
+fruits.each do |fruit|
+    numbers.shuffle.each do |n|
+        puts "#{fruit},#{n}"
+        break if n == 3
+    end
+end
+
+### 4.11.2 throwとcatchを使った大域脱出
+
+fruits = ['apple','melon','orange']
+numbers = [1,2,3]
+
+#### catch は irb では動作しないようだ
+
+catch :done do
+    fruits.shuffle.each do |fruit|
+        numbers.shuffle.each do |n|
+            puts "#{fruit}, #{n}"
+            if fruit == 'orange' && n == 3
+                #すべての繰り返し処理を脱出する
+                thorow :done
+            end
+        end
+    end
+end
+
+### 4.11.4 next
+
+numbers = [1,2,3,4,5]
+numbers.each do |n|
+    next if n.even?
+    puts n
+end
+
+numbers = [1,2,3,4,5]
+i = 0
+while i < numbers.size
+    n = numbers[i]
+    i += 1
+    next if n.even?
+    puts n
+end
+
+fruits = ['apple','melon','orange']
+numbers = [1,2,3,4]
+fruits.each do |fruit|
+    numbers.each do |n|
+        next if n.even?
+        puts "#{fruit}, #{n}"
+    end
+end
+
