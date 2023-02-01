@@ -950,3 +950,64 @@ fruits.each do |fruit|
     end
 end
 
+### 4.11.5 redo
+
+foods = ['ピーマン','トマト','セロリ']
+foods.each do |food|
+    print "#{food}はすきですか？ =>"
+    answer = ['はい','いいえ'].sample
+    puts answer
+
+    redo unless answer == 'はい'
+end
+
+foods = ['ピーマン','トマト','セロリ']
+count = 0
+foods.each do |food|
+    print "#{food}はすきですか？ =>"
+    answer = 'いいえ'
+    puts answer
+
+    count += 1
+    redo if answer != 'はい' && count < 2
+
+    count = 0
+end
+
+### 5.2.1 要素の追加、変更、取得
+
+currencies = {'japan' => 'yen', 'us' => 'dollar', 'India' => 'rupee' }
+currencies['italy'] = 'euro'
+currencies
+currencies['japan'] = '円'
+currencies
+currencies['India']
+currencies['india']
+
+### 5.2.2
+
+currencies.each do |key, value|
+    puts "#{key}:#{value}"
+end
+
+currencies.each do |key_value|
+    key = key_value[0]
+    value = key_value[1]
+    puts "#{key}:#{value}"
+end
+
+### 5.2.3
+
+a = {'x' => 1, 'y' => 2, 'z' => 3}
+b = {'x' => 1, 'y' => 2, 'z' => 3}
+a == b
+c = {'z' => 3, 'y' => 2, 'x' => 1}
+a == c
+d = {'x' => 10, 'y' => 2, 'z' => 3}
+a == d
+{}.size
+a.size
+
+currencies = {'japan' => 'yen', 'us' => 'dollar', 'India' => 'rupee' }
+currencies.delete('japan')
+currencies
