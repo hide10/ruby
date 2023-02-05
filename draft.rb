@@ -1011,3 +1011,13 @@ a.size
 currencies = {'japan' => 'yen', 'us' => 'dollar', 'India' => 'rupee' }
 currencies.delete('japan')
 currencies
+
+currencies.delete('italy') { |key| "Not found: #{key}" }
+
+### 5.4.1
+
+currencies = { :japan => 'yen', :us => 'dollar', :india => 'rupee'}
+currencies[:us]
+currencies[:italy] = 'euro'
+
+currencies = { japan:'yen', us:'dollar', india:'rupee'}
