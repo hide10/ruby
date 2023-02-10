@@ -1021,3 +1021,38 @@ currencies[:us]
 currencies[:italy] = 'euro'
 
 currencies = { japan:'yen', us:'dollar', india:'rupee'}
+
+### 5.6.8
+
+currencies = { japan:'yen', us:'dollar', india:'rupee'}
+currencies.to_a
+
+array = [[:japan,"yen"],[:us,"dollar"],[:india,"rupee"]]
+array.to_h
+
+### 5.6.9
+
+h = Hash.new('hello')
+h[:foo]
+a = h[:foo]
+b = h[:bar]
+a.equal?(b)
+
+# 破壊的な変更
+a.upcase!
+a
+b
+h
+
+## ブロックで作成、破壊的な変更
+h = Hash.new{ 'hello' }
+a = h[:foo]
+b = h[:bar]
+a.equal?(b)
+
+a.upcase!
+a
+b
+h
+
+'apple'.respond_to?('include?')
