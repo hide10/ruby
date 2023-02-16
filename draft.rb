@@ -1056,3 +1056,97 @@ b
 h
 
 'apple'.respond_to?('include?')
+
+### 6.3
+
+r = /\d{3}-\d{4}/
+r.class
+
+if '123-4567' =~ /\d{3}-\d{4}/
+    puts 'マッチしました'
+else
+    puts 'マッチしませんでした'
+end
+
+'hello' !~ /\d{3}-\d{4}/
+
+### 6.3.2
+
+text = '私の誕生日は1977年7月17日です。'
+m = /(\d+)年(\d+)月(\d+)日/.match(text)
+m[1]
+m[2]
+m[3]
+
+### 6.3.3
+
+text = '私の誕生日は1977年7月17日です。'
+m = /(?<year>\d+)年(?<month>\d+)月(?<day>\d+)日/.match(text)
+m[:year]
+m[:month]
+m[:day]
+m['year']
+m[2]
+
+text = '私の誕生日は1977年7月17日です。'
+if /(?<year>\d+)年(?<month>\d+)月(?<day>\d+)日/ =~ text
+    puts "#{year}/#{month}/#{day}"
+end
+
+### 6.3.4
+
+text = '私の誕生日は1977年7月17日です。'
+text =~ /(\d+)年(\d+)月(\d+)日/
+$~
+$&
+$1
+$2
+$3
+
+### 6.3.5
+
+'1977年7月17日 2021年12月31日'.scan(/(\d+)年(\d+)月(\d+)日/)
+
+text = '郵便番号は123-4567です'
+text[/\d{3}-\d{4}/]
+
+text = '123-4567 456-7890'
+
+text = '私の誕生日は1977年7月17日です。'
+text[/(\d+)年(\d+)月(\d+)日/]
+text[/(\d+)年(\d+)月(\d+)日/,3]
+text[/(?<year>\d+)年(?<month>\d+)月(?<day>\d+)日/,:day]
+text[/(?<year>\d+)年(?<month>\d+)月(?<day>\d+)日/,'day']
+
+text = '123,456-7890'
+text.gsub(',',':')
+
+text = '123,456-7890'
+text.gsub(/,|-/,':')
+
+text = '123,456-7890'
+hash = {',' => ':', '-' => '/'}
+text.gsub(/,|-/,hash)
+
+text = '123,456-7890'
+text.gsub(/,|-/,|matched| matched == ',' ? ':': '/')
+
+text = '123,456-7890'
+text.gsub!(/,|-/,':')
+text
+
+
+text = '誕生日は1977年7月17日です'
+text.gsub(/(\d+)年(\d+)月(\d+)日/,'\1-\2-\3')
+text.gsub(/(\d+)年(\d+)月(\d+)日/, "\\1-\\2-\\3")
+
+text.gsub(/(\d+)年(\d+)月(\d+)日/) do
+    "#{$1}-#{$2}-#{$3}"
+end
+
+text.gsub(/(?<year>\d+)年(?<month>\d+)月(?<day>\d+)日/,'\k<year>-\k<month>-\k<day>')
+
+text.gsub(/(?<year>\d+)年(?<month>\d+)月(?<day>\d+)日/) do
+    "#{$~[:year]}-#{$~[:month]}-#{$~[:day]}"
+end
+
