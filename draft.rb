@@ -1150,3 +1150,167 @@ text.gsub(/(?<year>\d+)年(?<month>\d+)月(?<day>\d+)日/) do
     "#{$~[:year]}-#{$~[:month]}-#{$~[:day]}"
 end
 
+### 6.5.2
+
+text = '03-1234-5678'
+
+case text
+when /^\d{3}-\d{4}$/
+    puts '郵便番号です'
+when /^\d{4}\/\d{1,2}\/\d{1,2}\/$/
+    puts '日付です'
+when /^\d+-\d+-\d+$/
+    puts '電話番号です'
+end
+
+### 6.5.3
+
+'HELLO' =~ /hello/i
+'HELLO' =~ %r{hello}i
+regexp = Regexp.new('hello',Regexp::IGNORECASE)
+'HELLO' =~ regexp
+
+"Hello\nBye" =~ /Hello.Bye/
+"Hello\nBye" =~ /Hello.Bye/m
+
+regexp = Regexp.new('Hello.Bye',Regexp::MULTILINE)
+"Hello\nBye" =~ regexp
+
+regexp = /
+    \d{3}   # 郵便番号の先頭3桁
+    -       # 区切り文字のハイフン
+    \d{4}   # 郵便番号の末尾4桁
+/x
+'123-4567' =~ regexp
+
+regexp = /
+    \d{3}   # 郵便番号の先頭3桁
+    \       # 半角スペースで区切る
+    \d{4}   # 郵便番号の末尾4桁
+/x
+'123 4567' =~ regexp
+
+pattern = <<'TEXT'
+    \d{3}   # 郵便番号の先頭3桁
+    -       # 区切り文字のハイフン
+    \d{4}   # 郵便番号の末尾4桁
+TEXT
+regexp = Regexp.new(pattern, Regexp::EXTENDED)
+'123-4567' =~ regexp
+
+"HELLO\nBYE" =~ /Hello.Bye/im
+
+regexp = Regexp.new('Hello.Bye',Regexp::IGNORECASE|Regexp::MULTILINE)
+"HELLO\nBYE" =~ regexp
+
+### 6.5.4
+
+text = '誕生日は1977年7月17日です'
+text =~ /(\d+)年(\d+)月(\d+)日/
+Regexp.last_match
+Regexp.last_match(0)
+Regexp.last_match(1)
+Regexp.last_match(2)
+Regexp.last_match(3)
+Regexp.last_match(-1)
+
+### 6.5.5
+
+/\d{3}-\d{4}/.match?('123-4567')
+$~
+Regexp.last_match
+
+'123-4567'.match?(/\d{3}-\d{4}/)
+
+### 7.3.1
+
+User.new
+
+class User
+    def initialize
+        puts 'Initialized.'
+    end
+end
+User.new
+
+class User
+    def initialize(name, age)
+        puts "name: #{name}, age: #{age}"
+    end
+end
+User.new('Alice',20)
+
+### 7.3.2
+
+class User
+    def hello
+        "Hello!"
+    end
+end
+user = User.new
+user.hello
+
+### 7.3.3
+
+class User
+    def initialize(name)
+        @name = name
+    end
+
+    def hello
+        "Hello, I am #{@name}."
+    end
+end
+user = User.new('Alice')
+user.hello
+
+class User
+    # 読み書き可能なメソッドの定義
+    attr_accessor :name
+
+    def initialize(name)
+        @name = name
+    end
+
+end
+user = User.new('Alice')
+user.name= 'Bob'
+user.name
+
+class User
+    # 読み取り用のメソッド定義
+    attr_reader :name
+
+    def initialize(name)
+        @name = name
+    end
+
+end
+user = User.new('Alice')
+user.name
+
+class User
+    # 書き込み用のメソッド定義
+    attr_writer :name
+
+    def initialize(name)
+        @name = name
+    end
+
+end
+user = User.new('Alice')
+user.name = 'Bob'
+
+class User
+    attr_accessor :name, :age
+
+    def initialize(name, age)
+        @name = name
+        @age = age
+    end
+
+end
+user = User.new('Alice', 20)
+user.name
+user.age = 30
+
