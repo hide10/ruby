@@ -9,7 +9,7 @@ class GateTest < Minitest::Test
         @mikuni = Gate.new(:mikuni)
     end
 
-++    def test_umeda_to_juso
+    def test_umeda_to_juso
         ticket = Ticket.new(160)
         @umeda.enter(ticket)
         assert @juso.exit(ticket)
