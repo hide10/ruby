@@ -1662,3 +1662,40 @@ bob = User.new('Bob', 60)
 alice.heavier_than?(bob)
 bob.heavier_than?(alice)
 alice.weight
+
+### 7.8 定数についてもっと詳しく
+
+class Product
+    DEFAULT_PRICE = 0
+end
+
+Product::DEFAULT_PRICE
+
+class Product
+    DEFAULT_PRICE = 0
+    # 定数をprivateにする
+    private_constant :DEFAULT_PRICE
+end
+# privateなのでクラスの外部からは参照できない
+Product::DEFAULT_PRICE
+
+class TrafficLight
+    # 配列COLORSを定数として定義し、その各要素も定数として同時に定義する
+    COLORS = [
+        GREEN = 0,
+        YELLOW = 1,
+        RED = 2
+    ]
+end
+
+TrafficLight::GREEN
+TrafficLight::YELLOW
+TrafficLight::RED
+TrafficLight::COLORS
+
+# mapメソッドの戻り値を定数に代入する
+NUMBERS = [1, 2, 3].map { |n| n * 10 }
+NUMBERS
+
+# 三項演算子を使った条件分岐の結果を定数に代入する(windows?は実行環境のOSを判定する架空のメソッド)
+NEW_LINE windows? ? "\r\n" : "\n"
