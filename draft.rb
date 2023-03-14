@@ -1715,3 +1715,68 @@ Product::DEFAULT_PRICE
 # クラスを凍結する
 Product.freeze
 Product::DEFAULT_PRICE = 5000
+
+## 7.8.2 定数はミュータブルなオブジェクトに注意する
+
+class Product
+    NAME = 'A Product'
+    SOME_NAMES = ['Foo', 'Bar', 'Baz']
+    SOME_PRICE = { foo: 1000, bar: 2000, baz: 3000}
+end
+
+# 文字列を破壊的に大文字に変更する
+Product::NAME.upcase!
+Product::NAME
+
+# 配列に新しい要素を追加する
+Product::SOME_NAMES << 'Hoge'
+Product::SOME_NAMES
+
+# ハッシュに新しいキーと値を追加する
+Product::SOME_PRICE[:hoge] = 4000
+Product::SOME_PRICE
+
+class Product
+    SOME_NAMES = ['Foo', 'Bar', 'Baz']
+
+    def self.names_without_foo(names = SOME_NAMES)
+        # namesがデフォルト値だと、以下のコードは定数のSOME_NAMESを破壊的に変更していることになる
+        names.delete('Foo')
+        names
+    end
+end
+
+Product.names_without_foo
+# 定数の中身が変わってしまった!
+Product::SOME_NAMES
+
+class Product
+    # 配列を凍結する
+    SOME_NAMES = ['Foo', 'Bar', 'Baz'].freeze
+
+    def self.names_without_foo(names = SOME_NAMES)
+        # namesがデフォルト値だと、以下のコードは定数のSOME_NAMESを破壊的に変更していることになる
+        names.delete('Foo')
+        names
+    end
+end
+
+class Product
+    # 配列はfreezeするが中身の文字列はfreezeされない
+    SOME_NAMES = ['Foo', 'Bar', 'Baz'].freeze
+end
+# 1番目の要素を破壊的に大文字に変更する
+Product::SOME_NAMES[0].upcase!
+# 1番目の要素の値が変わってしまった！
+Product::SOME_NAMES
+
+class Product
+    # 中身の文字列もfreezeする
+    SOME_NAMES = ['Foo'.freeze, 'Bar'.freeze, 'Baz'.freeze].freeze
+end
+# 今度は中身もfreezeしているのでは快適な変更はできない
+Product::SOME_NAMES[0].upcase!
+
+# mapメソッドで各要素をfreezeし、最後にmapメソッドの戻り値の配列をfreezeする
+SOME_NAMES = ['Foo', 'Bar', 'Baz'].map(&:freeze).freeze
+
