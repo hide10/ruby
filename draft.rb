@@ -1699,3 +1699,19 @@ NUMBERS
 
 # 三項演算子を使った条件分岐の結果を定数に代入する(windows?は実行環境のOSを判定する架空のメソッド)
 NEW_LINE windows? ? "\r\n" : "\n"
+
+## 7.8.1 定数と再代入
+
+class Product
+    DEFAULT_PRICE = 0
+    # 再代入して定数の値を書き換える
+    DEFAULT_PRICE = 1000
+end
+
+Product::DEFAULT_PRICE
+Product::DEFAULT_PRICE = 3000
+Product::DEFAULT_PRICE
+
+# クラスを凍結する
+Product.freeze
+Product::DEFAULT_PRICE = 5000
