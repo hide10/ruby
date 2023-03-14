@@ -1564,3 +1564,71 @@ class User
     private_class_method :hello
 end
 User.hello
+
+## 7.7.6 メソッドの可視性を変える方法あれこれ
+
+class User
+    # いったんpublicメソッドとして定義する
+    def foo
+        'foo'
+    end
+
+    def bar
+        'bar'
+    end
+
+    # fooとbarをprivateメソッドに変更する
+    private :foo, :bar
+
+    # bazはpublicメソッド
+    def baz
+        'baz'
+    end
+end
+
+user = User.new
+user.foo
+user.bar
+user.baz
+
+# 実はメソッド定義も値を返している
+def foo
+    'foo'
+end
+
+class User
+    # メソッド定義の戻り値 :foo をprivateキーワード（実際はメソッド）の引数とする
+    # 結果としてfooはprivateメソッドになる
+    private def foo
+        'foo'
+    end
+end
+user = User.new
+user.foo
+
+class User
+    attr_accessor :name
+
+    # ゲッターメソッドとセッターメソッドをそれぞれprivateメソッドにする
+    private :name, :name=
+
+    def initialize(name)
+        @name = name
+    end
+end
+
+user = User.new('Alice')
+user.name
+user.name = 'Bob'
+
+class User
+    # Ruby3.0は1行でprivateなアクセサメソッドを定義できる
+    private attr_accessor :name
+
+    def initialize(name)
+        @name = name
+    end
+end
+user = User.new('Alice')
+user.name
+user.name = 'Bob'
