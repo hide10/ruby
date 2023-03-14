@@ -1780,3 +1780,55 @@ Product::SOME_NAMES[0].upcase!
 # mapメソッドで各要素をfreezeし、最後にmapメソッドの戻り値の配列をfreezeする
 SOME_NAMES = ['Foo', 'Bar', 'Baz'].map(&:freeze).freeze
 
+## 7.9.1 クラスインスタンス変数
+
+class Product
+    # クラスインスタンス変数
+    @name = 'Product'
+
+    def self.name
+        # クラスインスタンス変数
+        @name
+    end
+
+    def initialize(name)
+        # インスタンス変数
+        @name = name
+    end
+
+    # attr_reader:nameでもいいが、@nameの中身を意識するためにあえてメソッドを定義する
+    def name
+        # インスタンス変数
+        @name
+    end
+end
+
+class DVD < Product
+    @name = 'DVD'
+
+    def self.name
+        # クラスインスタンス変数を参照
+        @name
+    end
+
+    def upcase_name
+        # インスタンス変数を参照
+        @name.upcase
+    end
+end
+
+Product.name
+product = Product.new('A great movie')
+product.name
+Product.name
+
+Product.name
+DVD.name
+product = Product.new('A great movie')
+product.name
+dvd = DVD.new('An awesome film')
+dvd.name
+dvd.upcase_name
+
+Product.name
+DVD.name
