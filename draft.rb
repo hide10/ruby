@@ -1924,3 +1924,29 @@ $foobar
 
 puts "\e[31mABC\e[0m"
 puts "\e[36mABC\e[0m"
+
+### 8.5.2 Enumerableモジュール
+
+Array.include?(Enumerable)
+Hash.include?(Enumerable)
+Range.include?(Enumerable)
+
+[1,2,3].map{|n| n * 10}
+{a:1,b:1,c:3}.map{ |k, v| [k, v*10]}
+(1..3).map{ |n| n*10}
+
+[1,2,3].count
+{a:1,b:1,c:3}.count
+(1..3).count
+
+### 8.5.3 Comparableモジュールと<=>演算子
+
+2<=>1
+2<=>2
+1<=>2
+2<=>'abc'
+
+'xyz'<=>'abc'
+'abc'<=>'abc'
+'abc'<=>'xyz'
+'abc'<=>123
