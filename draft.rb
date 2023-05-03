@@ -1950,3 +1950,37 @@ Range.include?(Enumerable)
 'abc'<=>'abc'
 'abc'<=>'xyz'
 'abc'<=>123
+
+class Tempo
+    include Comparable
+
+    attr_reader :bpm
+
+    # bpmはBeats Per Miniteの略で音楽の速さを表す単位
+
+    def initialize(bpm)
+        @bpm = bpm
+    end
+
+    # <=>はComparableモジュールで使われる演算子(メソッド)
+    def <=>(other)
+        # otherがTempoであればbpm同時を<=>で比較した結果を返す
+        # それ以外は比較できないのでnilを返す
+        other.is_a?(Tempo) ? bpm <=> other.bpm : nil
+    end
+
+    # irb上で結果を見やすくするためにinspectメソッドをオーバーライド
+    def inspect
+        "#{bpm}bpm"
+    end
+end
+
+t_120 = Tempo.new(120)
+t_180 = Tempo.new(180)
+t_120 > t_180
+t_120 <= t_180
+t_120 == t_180
+
+tempos = [Tempo.new(180), Tempo.new(60), Tempo.new(120)]
+#sortメソッドの内部では並び替えの際に<=>演算子が使われる
+tempos.sort
