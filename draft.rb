@@ -1998,3 +1998,40 @@ rescue => e
 end
 
 ### 9.2.5 クラスをしてして補足する例外を限定する
+
+begin
+    1/0
+rescue ZeroDivisionError
+    puts '0で除算しました'
+end
+
+begin
+    # NoMethodErrorを発生させる
+    'abc'.foo
+rescue ZeroDivisionError
+    puts '0で除算しました'
+end
+
+begin
+    # NoMethodErrorを発生させる
+    'abc'.foo
+rescue ZeroDivisionError
+    puts '0で除算しました'
+rescue NoMethodError
+    puts '存在しないメソッドが呼び出されました'
+end
+
+begin
+    # NoMethodErrorを発生させる
+    'abc'.foo
+rescue ZeroDivisionError, NoMethodError
+    puts '0で除算したか、存在しないメソッドが呼び出されました'
+end
+
+begin
+    # NoMethodErrorを発生させる
+    'abc'.foo
+rescue ZeroDivisionError, NoMethodError => e
+    puts '0で除算したか、存在しないメソッドが呼び出されました'
+    puts "エラー:#{e.class} #{E.message}"
+end
