@@ -2035,3 +2035,13 @@ rescue ZeroDivisionError, NoMethodError => e
     puts '0で除算したか、存在しないメソッドが呼び出されました'
     puts "エラー:#{e.class} #{E.message}"
 end
+
+## 10.3.5
+
+add_proc = Proc.new { |a, b| a + b }
+add_proc.class
+add_proc.lambda?
+
+add_lambda = ->(a, b){ a + b }
+add_lambda.class
+add_lambda.lambda?
