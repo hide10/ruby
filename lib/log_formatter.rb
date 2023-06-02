@@ -10,8 +10,8 @@ module LogFormatter
         
         log_data.map do |log|
             case log
-                in {request_id:, path:, status:404,error:}
-                    "[ERROR] request_id=#{request_id},path=#{path},status=404,error=#{error}"
+                in {request_id:, path:, status:404 | 500 => status,error:}
+                    "[ERROR] request_id=#{request_id},path=#{path},status=#{status},error=#{error}"
                 in {request_id:, path:, duration: 1000.. => duration}
                     # asパターンで:durationの値を変数durationに代入する
                     "[WARN] request_id=#{request_id},path=#{path},duration=#{duration}"
